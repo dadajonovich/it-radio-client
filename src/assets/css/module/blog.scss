@@ -1,0 +1,136 @@
+.blog {
+  margin-bottom: var(--space-between-sections);
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--space-between-block);
+    align-items: start;
+    justify-content: space-between;
+
+    margin-bottom: var(--space-between-block);
+
+    &-title {
+      margin-bottom: 0;
+    }
+
+    &-btn {
+      margin-left: auto;
+
+      @include responsive-xxs {
+        width: 100%;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 80px;
+
+    @include responsive-m {
+      flex-direction: column;
+    }
+  }
+
+  &__cover {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-height: 640px;
+
+    background: url('@/assets/img/bg/blog.svg') no-repeat center;
+    background-size: cover;
+
+    @include responsive-m {
+      height: calc(var(--base-content-size) / 2);
+      max-height: none;
+    }
+  }
+
+  &__list {
+  }
+
+  &__item {
+    position: relative;
+    z-index: 2;
+
+    padding: 2rem 0;
+
+    color: var(--color-white-opacity);
+
+    border-bottom: 1px solid var(--color-white-opacity);
+
+    transition: all 0.3s ease;
+
+    &::after,
+    &::before {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      left: 0;
+
+      display: none;
+
+      height: 1px;
+
+      background: var(--color-white-opacity);
+
+      transition: background 0.3s ease;
+    }
+
+    &::before {
+      top: -1px;
+    }
+
+    &::after {
+      bottom: -1px;
+      display: block;
+    }
+
+    &:first-child {
+      &::before {
+        display: block;
+      }
+    }
+
+    &:hover {
+      color: var(--color-white);
+
+      &::after,
+      &::before {
+        display: block;
+        background: var(--linear-gradient);
+      }
+    }
+
+    &:hover &-btn {
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFF) no-repeat 100%;
+      }
+    }
+
+    &-header {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-title {
+      width: calc(100% - 56px - 1rem);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    gap: 1.5rem;
+  }
+}

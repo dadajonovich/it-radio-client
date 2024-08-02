@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.text {
+  @include p;
+}
+
+.h1 {
+  @include h1;
+}
+
+.h2,
+h2 {
+  @include h2;
+}
+
+.h3 {
+  @include h3;
+}
+
+.h4 {
+  @include h4;
+}
+
+.p {
+  @include p;
+}
+
+.title {
+  @include p;
+
+  font-size: 34px;
+  color: transparent;
+  background-image: var(--linear-gradient);
+  background-clip: text;
+
+  &.m--white {
+    color: var(--color-white);
+  }
+}
+
+.ul {
+  @include ul;
+}
+
+.ol {
+  @include ol;
+}
+
+.hr {
+  @include hr;
+}
+
+.a,
+a {
+  @include a;
+
+  /* @include a--color $color-base; */
+}
+
+html {
+  scrollbar-color: var(--color-black) var(--bg-opacity);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+body {
+  padding: 0 !important;
+
+  font-family: var(--font-family-base);
+  font-size: var(--base-fz);
+  line-height: var(--base-lh);
+  color: var(--color-white);
+
+  background: var(--color-black);
+}
+
+.button {
+  @include button;
+}

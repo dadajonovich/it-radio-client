@@ -1,0 +1,23 @@
+.breadcrumbs {
+  display: flex;
+  margin-top: 80px;
+  margin-bottom: var(--space-between-block);
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '/';
+      margin: 0 10px;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+
+    &-link {
+      font-size: 0.875rem;
+    }
+  }
+}

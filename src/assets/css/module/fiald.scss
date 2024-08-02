@@ -1,0 +1,143 @@
+.field {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 8px;
+  padding-bottom: 28px;
+  padding-bottom: 0;
+
+  &.m--100 {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__label {
+    display: none;
+  }
+
+  .input {
+    @include input;
+  }
+
+  &__input {
+    &.m--search {
+      position: relative;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        top: 16px;
+        left: 16px;
+
+        width: 24px;
+        height: 24px;
+
+        background: svg-load('@/assets/img/icon/search-icon.svg') no-repeat 100%;
+      }
+
+      .input {
+        padding: 1rem 1.2rem 1rem 3rem;
+        border: 1px solid var(--color-primary);
+      }
+    }
+
+    &.m--hidden {
+      display: none;
+    }
+  }
+
+  &__checkbox {
+    &-label {
+      display: flex;
+      padding-left: 50px;
+      font-size: 1rem;
+      color: var(--color-white-opacity);
+
+      &::before {
+        cursor: pointer;
+        content: '';
+        user-select: none;
+
+        position: absolute;
+        left: 0;
+
+        display: block;
+
+        width: 40px;
+        height: 24px;
+
+        text-indent: -9999px;
+
+        background: var(--color-white-opacity);
+        border-radius: 100px;
+
+        transition: all 0.3s ease;
+
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+      }
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        top: 3px;
+        left: 3px;
+
+        width: 18px;
+        height: 18px;
+
+        background: #fff;
+        border-radius: 90px;
+
+        transition: all 0.3s ease;
+      }
+
+      &:hover {
+        cursor: url('@/assets/img/icon/cursor.svg'), auto;
+      }
+    }
+
+    &-input {
+      display: none;
+    }
+
+    &-input:checked + &-label {
+      &::before {
+        background: var(--color-primary);
+      }
+
+      &::after {
+        left: 37px;
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  textarea {
+    resize: none;
+    scrollbar-color: var(--color-black) var(--color-white-opacity);
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    scroll-margin-right: 20px;
+
+    min-height: 80px;
+
+    border-radius: 30px !important;
+  }
+
+  &__comment {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+}

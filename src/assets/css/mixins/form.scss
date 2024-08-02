@@ -1,0 +1,217 @@
+@mixin input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 1rem 1.2rem;
+
+  color: var(--color-white);
+
+  background: transparent;
+  border: 1px solid var(--color-white);
+  border-radius: 40px;
+}
+
+@mixin button {
+  cursor: pointer;
+
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-width: 220px;
+  min-height: 3rem;
+
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1rem;
+  color: var(--color-white);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+
+  background: transparent;
+  border: 1px solid var(--color-white);
+  border-radius: 100px;
+
+  transition:
+    border 0.5s ease,
+    background 0.5s ease,
+    color 0.5s ease;
+
+  &:hover {
+    cursor: url('@/assets/img/icon/cursor.svg'), auto;
+    color: var(--color-black);
+    background: var(--color-white);
+  }
+
+  &-violet {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    &:hover {
+      border-color: transparent;
+    }
+  }
+
+  &.is-active,
+  &:active {
+    cursor: url('@/assets/img/icon/cursor.svg'), auto;
+    color: var(--color-black);
+    background: var(--color-white-darker);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  &:active:not(:disabled) {
+  }
+
+  &.m--fit-content {
+    width: fit-content;
+  }
+
+  &.m--blur {
+    min-width: 0;
+    padding: 1rem 1.5rem;
+
+    background: var(--bg-opacity);
+    backdrop-filter: blur(5px);
+    border: none;
+
+    &:hover {
+      background: var(--color-white);
+    }
+
+    &:active {
+      color: var(--color-white);
+      background: transparent;
+      backdrop-filter: blur(5px);
+    }
+  }
+
+  &.m--arrow {
+    &::after {
+      content: '';
+
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFF) no-repeat 100%;
+      background-size: cover;
+
+      transition:
+        background 0.3s ease,
+        width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 45px;
+      height: 20px;
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#232323) no-repeat 100%;
+    }
+
+    &.m--active,
+    &:active {
+      color: var(--color-white);
+      background: transparent;
+    }
+  }
+
+  &.m--w-100 {
+    width: 100%;
+  }
+
+  &.m--white {
+    color: var(--color-black);
+    background: var(--color-white-darker);
+
+    &:hover {
+      color: var(--color-white);
+      background: transparent;
+    }
+
+    &.m--arrow {
+      &::after {
+        content: '';
+        background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#232323) no-repeat 100%;
+        background-size: cover;
+        transition:
+          background 0.3s ease,
+          width 0.3s ease;
+      }
+
+      &:hover::after {
+        background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFFFF) no-repeat 100%;
+      }
+    }
+  }
+
+  &.m--text-link {
+    @include a;
+
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+
+    border: none;
+
+    pad: 0;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &.m--circle {
+    overflow: hidden;
+
+    width: 56px;
+    min-width: 0;
+    height: 56px;
+
+    border-color: var(--color-white-opacity);
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      inset: 0;
+
+      opacity: 0;
+      background: var(--linear-gradient);
+
+      transition: opacity 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      inset: 0;
+      transform: rotate(-45deg);
+
+      width: 18px;
+      height: 18px;
+      margin: auto;
+
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#404145FF) no-repeat 100%;
+    }
+
+    &:hover::before {
+      cursor: url('@/assets/img/icon/cursor.svg'), auto;
+      opacity: 1;
+    }
+
+    &:hover::after {
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFF) no-repeat 100%;
+    }
+  }
+}

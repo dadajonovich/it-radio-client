@@ -1,0 +1,35 @@
+@mixin responsive-xl {
+  @media (max-width: $document-width-xl) {
+    @content;
+  }
+}
+
+@mixin responsive-l {
+  @media (max-width: $document-width-l) {
+    @content;
+  }
+}
+
+@mixin responsive-m {
+  @media (max-width: $document-width-m) {
+    @content;
+  }
+}
+
+@mixin responsive-s {
+  @media (max-width: $document-width-s) {
+    @content;
+  }
+}
+
+@mixin responsive-xs {
+  @media (max-width: $document-width-xs) {
+    @content;
+  }
+}
+
+@mixin responsive-xxs {
+  @media (max-width: $document-width-xxs) {
+    @content;
+  }
+}

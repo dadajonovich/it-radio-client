@@ -1,0 +1,47 @@
+$document-width-xl: 1420px;
+$document-width-l: 1180px;
+$document-width-m: 1024px;
+$document-width-s: 730px;
+$document-width-xs: 640px;
+$document-width-xxs: 480px;
+$color-primary: #5e5bfc;
+$color-white: #fff;
+$color-white-opacity: #bbb9ca;
+
+:root {
+  --color-black: #232323;
+  --color-white: #{$color-white};
+  --color-white-darker: #e7e7e7;
+  --color-white-opacity: #{$color-white-opacity};
+  --bg-wrapper-modal: #000000e5;
+  --color-primary: #{$color-primary};
+  --color-black-cc: #000c;
+  --color-emmit: #e81717;
+  --bg-opacity: #74767d;
+  --base-fz: 18px;
+  --base-lh: 1.3;
+  --font-family-base: 'Manrope', 'Tahoma', sans-serif;
+  --linear-gradient-highlight: linear-gradient(259.3deg, #5e5bfc 0.44%, #871df0 97.88%);
+  --linear-gradient: linear-gradient(91.17deg, #c6f1f7 -4.01%, #f983e9 36.14%, #b877ff 77.44%, #c2e9cd 106.11%);
+  --container: #{$document-width-xl};
+  --space-between-block: calc(var(--base-fz) * 2.25);
+  --space-between-sections: calc(var(--base-fz) * 7);
+  --base-content-size: calc(100vh - 140px);
+
+  @media (max-width: $document-width-xl) {
+    --container: $document-width-l;
+  }
+
+  @media (max-width: $document-width-l) {
+    --container: $document-width-m;
+  }
+
+  @media (max-width: $document-width-m) {
+    --container: $document-width-s;
+    --space-between-sections: calc(var(--base-fz) * 2.7);
+  }
+
+  @media (max-width: $document-width-s) {
+    --container: $document-width-xs;
+  }
+}

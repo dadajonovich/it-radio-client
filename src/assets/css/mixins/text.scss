@@ -1,0 +1,371 @@
+@mixin __p {
+  position: relative;
+  z-index: 2;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.m--mb-1 {
+    margin-bottom: 1rem;
+  }
+
+  &.m--mb-2 {
+    margin-bottom: 2rem;
+  }
+
+  &.m--mb-3 {
+    margin-bottom: 3rem;
+  }
+
+  &.m--mb-4 {
+    margin-bottom: 4rem;
+  }
+
+  &.m--mb-5 {
+    margin-bottom: 5rem;
+  }
+}
+
+@mixin h1 {
+  @include __p;
+
+  /* margin-top: 32px; */
+  margin-bottom: 1.5rem;
+  padding-bottom: 6px;
+
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-white);
+
+  @include responsive-l {
+    font-size: 84px;
+  }
+
+  @include responsive-m {
+    font-size: 48px;
+  }
+
+  @include responsive-s {
+    font-size: 36px;
+  }
+}
+
+@mixin h2 {
+  @include __p;
+
+  margin: 2.5rem 0;
+  padding-bottom: 6px;
+
+  font-size: 3.375rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: transparent;
+  text-transform: uppercase;
+
+  background-image: var(--linear-gradient);
+  background-clip: text;
+
+  /* @include responsive-s {
+        font-size: 36px;
+    } */
+  &.m--white {
+    margin: 1.5rem 0;
+    color: var(--color-white);
+  }
+
+  &.m--border {
+    &::after {
+      content: '';
+
+      display: block;
+
+      width: 100%;
+      max-width: 260px;
+      height: 10px;
+      margin-top: 10px;
+
+      background: url('@/assets/img/icon/borderLine.svg');
+    }
+  }
+
+  a {
+    font-weight: 500;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 0.5s ease;
+
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+
+  @include responsive-l {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  @include responsive-m {
+    font-size: 32px;
+  }
+}
+
+@mixin h3 {
+  @include __p;
+
+  margin-top: 24px;
+  margin-bottom: 16px;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@mixin h4 {
+  @include __p;
+
+  margin-top: 16px;
+  margin-bottom: 8px;
+
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@mixin p {
+  @include __p;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+@mixin ul {
+  @include p;
+
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin-bottom: 16px;
+    padding-left: 15px;
+
+    /* &:before {
+             content: '';
+             position: absolute;
+             left: 0;
+             width: 15px;
+             height: 14px;
+             top: 3px;
+             background-size: contain;
+             background-position: center;
+             background-image: svg-load('assets/img/icons/vector.svg', fill=$color-red);
+             background-repeat: no-repeat;
+         } */
+    &::before {
+      content: '';
+
+      position: absolute;
+      top: 7px;
+      left: 0;
+
+      width: 5px;
+      height: 5px;
+
+      background: var(--color-white);
+      border-radius: 50%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.m--dots {
+    li {
+      padding-left: 1rem;
+
+      &::before {
+        content: '•';
+
+        top: 0;
+
+        width: auto;
+        height: auto;
+
+        background: none;
+      }
+    }
+  }
+}
+
+@mixin ol {
+  @include p;
+
+  counter-reset: item;
+  list-style: none;
+
+  li {
+    counter-increment: item;
+    margin-bottom: 16px;
+    vertical-align: middle;
+
+    &::before {
+      content: counter(item);
+
+      padding-left: 12px;
+
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 24px;
+      color: var(--color-white);
+    }
+  }
+}
+
+@mixin hr {
+  @include p;
+}
+
+@mixin a {
+  position: relative;
+  z-index: 2;
+
+  font-weight: 500;
+  color: var(--color-white);
+  text-decoration: none;
+
+  transition: all 0.5s ease;
+
+  &:hover {
+    cursor: url('@/assets/img/icon/cursor.svg'), auto;
+
+    color: transparent;
+    text-decoration: none;
+
+    background-image: var(--linear-gradient);
+    background-clip: text;
+  }
+
+  &.m--link {
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid transparent;
+
+    &::after {
+      content: '';
+
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFF) no-repeat 100%;
+      background-size: cover;
+
+      transition:
+        background 0.3s ease,
+        width 0.3s ease;
+    }
+
+    &:hover {
+      color: var(--color-white);
+      border-bottom: 1px solid var(--color-white);
+    }
+
+    &:hover::after {
+      width: 40px;
+    }
+  }
+
+  &.m--underline {
+    text-decoration: underline;
+  }
+}
+
+// @mixin a--color $color {
+//   color: $color;
+//   border-color: rgba($color, 0.5);
+// }
+
+@mixin table {
+  /* dummy */
+}
+
+@mixin base {
+  font: $font-size-base/$line-height-base $font-family-base;
+  color: $color-base;
+}
+
+@mixin format {
+  h1:not(.nostyle) {
+    @include h1;
+  }
+
+  h2:not(.nostyle) {
+    @include h2;
+  }
+
+  h3:not(.nostyle) {
+    @include h3;
+  }
+
+  h4:not(.nostyle) {
+    @include h4;
+  }
+
+  p:not(.nostyle) {
+    @include p;
+  }
+
+  ul:not(.nostyle) {
+    @include ul;
+  }
+
+  ol:not(.nostyle) {
+    @include ol;
+  }
+
+  hr:not(.nostyle) {
+    @include hr;
+  }
+
+  a:not(.nostyle) {
+    @include a;
+  }
+
+  table:not(.nostyle) {
+    @include table;
+  }
+
+  b:not(.nostyle),
+  strong:not(.nostyle) {
+    font-weight: bold;
+  }
+
+  i:not(.nostyle),
+  em:not(.nostyle) {
+    font-style: italic;
+  }
+
+  u:not(.nostyle),
+  ins:not(.nostyle) {
+    text-decoration: underline;
+  }
+
+  strike:not(.nostyle),
+  del:not(.nostyle) {
+    text-decoration: line-through;
+  }
+}
+
+@mixin text {
+  @include format;
+
+  font: $font-size-text/$line-height-text $font-family-text;
+  color: $color-text;
+}

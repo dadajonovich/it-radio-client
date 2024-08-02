@@ -1,0 +1,62 @@
+<template>
+  <div ref="map" :style="{ width: mapWidth, height: mapHeight }"></div>
+</template>
+
+<script>
+export default {
+  name: 'YandexMap',
+  props: {
+    apiKey: {
+      type: String,
+      default: '',
+    },
+    mapWidth: {
+      type: String,
+      default: '100%',
+    },
+    mapHeight: {
+      type: String,
+      default: '100%',
+    },
+    center: {
+      type: Array,
+      default: () => [61.402554, 55.159902],
+    },
+    zoom: {
+      type: Number,
+      default: 10,
+    },
+  },
+  mounted() {
+    this.loadYandexMap();
+  },
+  methods: {
+    loadYandexMap() {
+      if (document.querySelector('script[src*="api-maps.yandex.ru"]')) {
+        this.initMap();
+      } else {
+        const script = document.createElement('script');
+        script.src = `https://api-maps.yandex.ru/v3/?apikey=${this.apiKey}&lang=ru_RU`;
+        script.onload = this.initMap;
+        document.head.appendChild(script);
+      }
+    },
+    async initMap() {
+      // eslint-disable-next-line no-undef
+      await ymaps3.ready;
+
+      // eslint-disable-next-line no-undef
+      const { YMap, YMapDefaultSchemeLayer, YMapDefaultMarker } = ymaps3;
+
+      const map = new YMap(this.$refs.map, {
+        location: {
+          center: this.center,
+          zoom: this.zoom,
+        },
+      });
+
+      map.addChild(new YMapDefaultSchemeLayer());
+    },
+  },
+};
+</script>

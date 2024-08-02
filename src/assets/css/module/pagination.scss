@@ -1,0 +1,59 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-between-block);
+  margin-bottom: var(--space-between-sections);
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin: 0 5px;
+  }
+
+  &__link {
+    padding: 0 5px;
+
+    &.m--current {
+      color: transparent;
+      background-image: var(--linear-gradient);
+      background-clip: text;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 50%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      margin: 5px;
+    }
+
+    &:hover {
+      background: var(--color-white);
+    }
+
+    &.m--prev::after {
+      transform: rotate(180deg);
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFF) no-repeat 100%;
+    }
+
+    &.m--prev:hover::after {
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#232323) no-repeat 100%;
+    }
+
+    &.m--next::after {
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#FFFF) no-repeat 100%;
+    }
+
+    &.m--next:hover::after {
+      background: svg-load('@/assets/img/icon/ArrowRight.svg', stroke=#232323) no-repeat 100%;
+    }
+  }
+}
