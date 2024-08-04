@@ -23,14 +23,14 @@ const serviceUrl = {
 };
 
 let urlPath = `${serviceUrl.protocol}:${serviceUrl.url}${serviceUrl.api}`;
-let urlPathAudio = `${serviceUrl.protocol}:${serviceUrl.apiAudio}`;
+const urlPathAudio = `${serviceUrl.protocol}:${serviceUrl.apiAudio}`;
 if (process.env.CLIENT) {
   if (serviceUrl.onLocal || window.location.hostname === 'localhost') {
     urlPath = `${serviceUrl.localPath}:${serviceUrl.port}${serviceUrl.api}`;
   }
 }
-let selfUrl = `${serviceUrl.protocol}:${serviceUrl.url}`;
-let selfPath = `${serviceUrl.protocol}:${serviceUrl.selfUrl}`;
+const selfUrl = `${serviceUrl.protocol}:${serviceUrl.url}`;
+const selfPath = `${serviceUrl.protocol}:${serviceUrl.selfUrl}`;
 
 const robotsTxt = {
   filePath: '/robots.txt',

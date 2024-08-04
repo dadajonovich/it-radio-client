@@ -14,9 +14,9 @@
 </template>
 
 <script lang="ts">
-import { defineProps, ref, onUpdated, computed } from 'vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   name: 'toggle',
   props: {
     context: {
@@ -36,5 +36,5 @@ export default {
       this.context.node.input(!this.context._value);
     },
   },
-};
+});
 </script>

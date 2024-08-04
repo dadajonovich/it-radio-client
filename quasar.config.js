@@ -54,7 +54,7 @@ module.exports = configure(function (/* ctx */) {
       },
       alias: {
         '@': path.join(__dirname, './src'),
-        '@libs': path.join(__dirname, './node_modules'),
+        // '@libs': path.join(__dirname, './node_modules'),
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'

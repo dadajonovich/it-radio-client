@@ -67,6 +67,6 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '@libs/swiper/swiper.css';
+@import 'swiper/css';
 @import '@/assets/css/index.scss';
 </style>

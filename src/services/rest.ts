@@ -5,18 +5,18 @@ import cache from '@/utils/cache';
 
 class RESTError extends Error {
   constructor(error, message, params = {}) {
-    let detail =
+    const detail =
       error.response &&
       error.response.data &&
       (error.response.data.detail || (error.response.data.error && error.response.data.error.detail));
-    let header = (message || error.message) + (detail ? ': ' + detail : '');
+    const header = (message || error.message) + (detail ? ': ' + detail : '');
     super(header);
 
     this.name = this.constructor.name;
     this.parent = error;
     this.detail = detail;
     this.response = error.response;
-    for (let k in params) {
+    for (const k in params) {
       this[k] = params[k];
     }
 
@@ -35,7 +35,7 @@ class RESTError extends Error {
 }
 
 class REST {
-  static get settings() {
+  static get settings(): string {
     throw new Error('settings must be overridden');
   }
   static _get(url, params = {}, extraParams, use_cache = false, isBlob = false) {
@@ -63,7 +63,7 @@ class REST {
     use_cache = false,
     isBlob = false,
   ) {
-    let cache_key = null;
+    const cache_key = null;
     return ajax
       .request({
         method,

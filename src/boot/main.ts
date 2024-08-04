@@ -5,15 +5,15 @@ import 'vue-final-modal/style.css';
 import { VueFinalModal } from 'vue-final-modal';
 import { plugin, defaultConfig, createInput } from '@formkit/vue';
 import { ru } from '@formkit/i18n';
-import maskaInput from '@/components/inputs/maska-input';
-import toggle from '@/components/inputs/toggle';
+import maskaInput from '@/components/inputs/maska-input.vue';
+import toggle from '@/components/inputs/toggle.vue';
 
 import { vMaska } from 'maska/vue';
 
 export default boot(async ({ app, router }) => {
   app.config.globalProperties.$router = router;
   app.use(helpers);
-  app.scrollMagic = VueScrollmagic;
+  // app.scrollMagic = VueScrollmagic;
   app.component('VueFinalModal', VueFinalModal);
   app.config.globalProperties.$scrollMagic = VueScrollmagic;
   app.directive('Maska', vMaska);
