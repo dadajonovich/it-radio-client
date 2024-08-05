@@ -44,7 +44,7 @@
     >
       <SwiperSlide class="team__item" v-for="employee in team" :key="employee.id">
         <div class="team__cover">
-          <img :src="`${selfUrl + employee.img_person}`" alt="user" />
+          <img :src="employee.img_person" alt="user" />
         </div>
         <div class="team__name">
           {{ employee.name }} {{ employee.last_name }}
@@ -61,19 +61,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import 'swiper/css';
+import { defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Scrollbar } from 'swiper/modules';
 import { app } from '@/services';
 import { selfUrl } from '@/settings';
+import { SwiperModule } from 'swiper/types';
+import { TeamResponce } from '@/services/app';
 
-export default {
+type TeamData = {
+  team: TeamResponce[];
+  showLoader: boolean;
+  modules: SwiperModule[];
+};
+
+export default defineComponent({
   name: 'team',
   components: { Swiper, SwiperSlide },
-  data() {
+  data(): TeamData {
     return {
-      selfUrl,
       team: [],
       showLoader: false,
       modules: [Scrollbar, Pagination],
@@ -90,6 +98,7 @@ export default {
         .then((data) => {
           this.showLoader = false;
           this.team = data;
+          console.log(this.team);
         })
         .catch((err) => {
           this.showLoader = false;
@@ -97,5 +106,5 @@ export default {
         });
     },
   },
-};
+});
 </script>

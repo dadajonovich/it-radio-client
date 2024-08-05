@@ -5,12 +5,13 @@ import { REST, RESTError } from './rest';
 
 type UserResponce = {};
 
-type TeamResponce = {
+export type TeamResponce = {
   id: number;
   name: 'string';
   last_name: 'string';
-  img: 'string';
-}[];
+  position: 'string';
+  img_person: 'string';
+};
 
 type NowPlayingResponce = {};
 
@@ -56,7 +57,7 @@ export default class extends REST {
       });
   }
 
-  static getTeams(station, params): TeamResponce {
+  static getTeams(station?, params?): Promise<TeamResponce[]> {
     return this._get('radio/teams', params, {})
       .then((data) => {
         return data;
