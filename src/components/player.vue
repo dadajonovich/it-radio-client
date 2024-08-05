@@ -70,14 +70,28 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { app, audio as Player } from '@/services';
 import templateArtist from '@/assets/img/mock/template-artist.png';
+import { AzuraFirstResponce, AzuraSecondResponce, DataSong } from '@/services/audio';
 
-export default {
+type PlayerData = {
+  isFavorites: boolean;
+  isPlayRadio: boolean;
+  connection: Player | null;
+  isUserMusic: any;
+  bolTemp: boolean;
+  songVolume: number;
+  preToggleVol: number | null;
+  playerInfo: any;
+  templateArtist: any;
+};
+
+export default defineComponent({
   name: 'player',
   components: {},
-  data() {
+  data(): PlayerData {
     return {
       isFavorites: false,
       isPlayRadio: false,
@@ -179,7 +193,6 @@ export default {
       if (this.connection) {
         this.connection.removePlay();
       }
-
       this.connection = new Player();
       this.connection.init();
 
@@ -206,13 +219,18 @@ export default {
           console.error(err);
         });
     },
-    handleConnection(e) {
-      const jsonData = JSON.parse(e.data);
-      const data =
-        // Второй ответ
-        jsonData?.pub?.data ||
-        // Первый ответ
-        jsonData?.connect?.subs?.['station:it-radio']?.publications?.[0]?.data;
+    handleConnection(e: MessageEvent) {
+      const jsonData = JSON.parse(e.data) as AzuraFirstResponce | AzuraSecondResponce;
+      console.log(jsonData);
+      let data;
+
+      if ('pub' in jsonData) {
+        // Это AzuraSecondResponce
+        data = jsonData.pub.data;
+      } else if ('connect' in jsonData) {
+        // Это AzuraFirstResponce
+        data = jsonData.connect.subs['station:it-radio'].publications[0].data;
+      }
 
       if (!data) return;
       if (this.currentPlay.live) {
@@ -230,7 +248,7 @@ export default {
         }
       }
     },
-    actionCurrentPlay(song) {
+    actionCurrentPlay(song: DataSong) {
       console.log('actionCurrentPlay', song);
       const currentPlay = {
         ...this.currentPlay, // Инфа про текущий трек
@@ -400,5 +418,5 @@ export default {
     if (!paddedSeconds) paddedSeconds = '00';
     return `${paddedMinutes}:${paddedSeconds}`;
   },
-};
+});
 </script>

@@ -4,7 +4,7 @@ import store from '@/store';
 import cache from '@/utils/cache';
 
 class RESTError extends Error {
-  constructor(error, message, params = {}) {
+  constructor(error, message: string, params = {}) {
     const detail =
       error.response &&
       error.response.data &&

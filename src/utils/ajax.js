@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ajax as settings } from '@/settings';
 
 export default class {
-  static get(params: any) {
+  static get(params) {
     return this.request(_defaults({ method: 'get' }, params));
   }
   static post(params) {

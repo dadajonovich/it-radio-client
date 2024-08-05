@@ -3,11 +3,22 @@ import { REST, RESTError } from './rest';
 
 // console.log(settings);
 
+type UserResponce = {};
+
+type TeamResponce = {
+  id: number;
+  name: 'string';
+  last_name: 'string';
+  img: 'string';
+}[];
+
+type NowPlayingResponce = {};
+
 export default class extends REST {
   static get settings() {
     return settings;
   }
-  static user(params) {
+  static user(params): UserResponce {
     return this._get('user', {}, params)
       .then((data) => {
         return data;
@@ -45,7 +56,7 @@ export default class extends REST {
       });
   }
 
-  static getTeams(station, params) {
+  static getTeams(station, params): TeamResponce {
     return this._get('radio/teams', params, {})
       .then((data) => {
         return data;

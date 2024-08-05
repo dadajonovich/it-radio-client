@@ -23,7 +23,7 @@ import Player from '@/components/player.vue';
 import ChangingUser from '@/components/modal/сhanging-user.vue';
 
 export default {
-  async preFetch({ store, currentRoute, previousRoute, redirect, ssrContext, urlPath, publicPath }) {},
+  // async preFetch({ store, currentRoute, previousRoute, redirect, ssrContext, urlPath, publicPath }) {},
   components: {
     ChangingUser,
     Player,

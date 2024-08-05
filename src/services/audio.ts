@@ -3,6 +3,45 @@ import { REST, RESTError } from './rest';
 
 // запросы на AzuraCast
 
+type AzuraData = {
+  data: {
+    np: {
+      now_playing: {
+        song: DataSong;
+      };
+      station: {
+        listen_url: string;
+      };
+    };
+  };
+};
+
+export type DataSong = {
+  id: string;
+  text: string;
+  artist: string;
+  title: string;
+  album: string;
+  genre: string;
+  isrc: string;
+  lyrics: string;
+  art: string;
+};
+
+export type AzuraFirstResponce = {
+  connect: {
+    subs: {
+      'station:it-radio': {
+        publications: [AzuraData];
+      };
+    };
+  };
+};
+
+export type AzuraSecondResponce = {
+  pub: AzuraData;
+};
+
 export default class extends REST {
   static get settings() {
     return settings;
@@ -27,7 +66,9 @@ export default class extends REST {
   }
 
   removePlay() {
-    this.connection.close();
+    if (this.connection) {
+      this.connection.close();
+    } else throw new Error('Соединение с AzuraCast не установлено!');
   }
   songs() {
     this.connection.onmessage = (e) => {
@@ -57,8 +98,10 @@ export default class extends REST {
     };
   }
 
-  onHandler(callback) {
-    this.connection.onmessage = callback;
+  onHandler(callback: (e: MessageEvent) => void) {
+    if (this.connection) {
+      this.connection.onmessage = callback;
+    } else throw new Error('Соединение с AzuraCast не установлено!');
   }
   static getPlayList(station, params) {
     // return this._get(`station/${station}/playlists`, params, {}).then((data) => {
