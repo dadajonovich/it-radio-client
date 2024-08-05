@@ -77,6 +77,9 @@ module.exports = configure(function (/* ctx */) {
         viteConf.resolve = mergeConfig(viteConf.resolve, {
           extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
         });
+        viteConf.css = mergeConfig(viteConf.css, {
+          devSourcemap: true,
+        });
       },
       // viteVuePluginOptions: {},
 
@@ -100,6 +103,7 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       // https: true
       open: false, // opens browser window automatically
+      vueDevtools: true,
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
