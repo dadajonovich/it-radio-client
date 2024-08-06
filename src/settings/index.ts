@@ -1,8 +1,8 @@
 //throw new Error('Settings module must be replaced depending on mode');
 const ajax = {
-  timeout: process.env.AJAX_TIMEOUT,
-  responseType: process.env.AJAX_RESPONSE_TYPE,
-  responseEncoding: process.env.AJAX_ENCODING,
+  timeout: process.env.AJAX_TIMEOUT!,
+  responseType: process.env.AJAX_RESPONSE_TYPE!,
+  responseEncoding: process.env.AJAX_ENCODING!,
 };
 
 const cache = {

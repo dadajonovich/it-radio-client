@@ -3,14 +3,12 @@ import { REST, RESTError } from './rest';
 
 // console.log(settings);
 
-type UserResponce = {};
-
 export type TeamResponce = {
   id: number;
-  name: 'string';
-  last_name: 'string';
-  position: 'string';
-  img_person: 'string';
+  name: string;
+  last_name: string;
+  position: string;
+  img_person: string;
 };
 
 type NowPlayingResponce = {};
@@ -57,8 +55,8 @@ export default class extends REST {
       });
   }
 
-  static getTeams(params = {}): Promise<TeamResponce[]> {
-    return this._get('radio/teams', params, {})
+  static getTeams(): Promise<TeamResponce[]> {
+    return this._get('radio/teams')
       .then((data) => {
         return data;
       })

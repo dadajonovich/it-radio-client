@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "allowJs": true,
     // "checkJs": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "paths": {
       "@/*": ["./src/*"]
       // "@components/*": ["./src/components/*.vue"]
