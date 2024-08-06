@@ -93,7 +93,7 @@
 <script>
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Team from '@/components/team.vue';
+import Team from '@/components/Team.vue';
 import RubricBlock from 'components/rubric-block.vue';
 import Blog from 'components/blog.vue';
 

@@ -214,46 +214,61 @@
     border-radius: 50%;
 
     &.m--play {
-      &::after {
-        content: '';
-
-        position: absolute;
-
-        width: 18px;
-        height: 18px;
-        margin: auto;
-
-        background: transparent url('@/assets/img/icon/play.svg') no-repeat 100%;
-        background-size: contain;
-      }
-
-      &:hover::after {
-        background: $color-primary url('@/assets/img/icon/play.svg') no-repeat 100%;
-        background-size: contain;
+      &:hover {
+        path {
+          fill: $color-primary;
+        }
       }
     }
 
     &.m--pause {
-      &::after {
-        content: '';
-
-        position: absolute;
-
-        width: 18px;
-        height: 18px;
-        margin: auto;
-
-        // background: svg-load('@/assets/img/icon/pause.svg', fill=#FFFF) no-repeat 100%;
-        background: transparent url('@/assets/img/icon/pause.svg') no-repeat 100%;
-        background-size: contain;
-      }
-
-      &:hover::after {
-        // background: svg-load('@/assets/img/icon/pause.svg', fill=$color-primary) no-repeat 100%;
-        background: $color-primary url('@/assets/img/icon/pause.svg') no-repeat 100%;
-        background-size: contain;
+      &:hover {
+        path {
+          fill: $color-primary;
+        }
       }
     }
+    // &.m--play {
+    //   &::after {
+    //     content: '';
+
+    //     position: absolute;
+
+    //     width: 18px;
+    //     height: 18px;
+    //     margin: auto;
+
+    //     background: transparent url('@/assets/img/icon/play.svg') no-repeat 100%;
+    //     background-size: contain;
+    //   }
+
+    //   &:hover::after {
+    //     background: $color-primary url('@/assets/img/icon/play.svg') no-repeat 100%;
+    //     background-size: contain;
+    //   }
+    // }
+
+    // &.m--pause {
+    //   &::after {
+    //     content: '';
+
+    //     position: absolute;
+
+    //     width: 18px;
+    //     height: 18px;
+    //     margin: auto;
+
+    //     // background: svg-load('@/assets/img/icon/pause.svg', fill=#FFFF) no-repeat 100%;
+    //     background: transparent url('@/assets/img/icon/pause.svg') no-repeat 100%;
+    //     background-size: contain;
+    //   }
+
+    //   &:hover::after {
+    //     // background: svg-load('@/assets/img/icon/pause.svg', fill=$color-primary) no-repeat 100%;
+    //     background: $color-primary url('@/assets/img/icon/pause.svg') no-repeat 100%;
+    //     background-size: contain;
+    //   }
+    // }
 
     &.m--skeleton {
       background: none;

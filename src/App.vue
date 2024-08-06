@@ -19,7 +19,7 @@ import Page500 from '@/views/Page500.vue';
 import AppHeader from '@/components/app-header.vue';
 import AppFooter from '@/components/app-footer.vue';
 import Authentication from '@/components/modal/authentication.vue';
-import Player from '@/components/player.vue';
+import Player from '@/components/Player.vue';
 import ChangingUser from '@/components/modal/сhanging-user.vue';
 
 export default {

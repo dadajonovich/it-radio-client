@@ -57,7 +57,7 @@ export default class extends REST {
       });
   }
 
-  static getTeams(station?, params?): Promise<TeamResponce[]> {
+  static getTeams(params = {}): Promise<TeamResponce[]> {
     return this._get('radio/teams', params, {})
       .then((data) => {
         return data;

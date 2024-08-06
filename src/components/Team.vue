@@ -67,7 +67,6 @@ import { defineComponent } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Scrollbar } from 'swiper/modules';
 import { app } from '@/services';
-import { selfUrl } from '@/settings';
 import { SwiperModule } from 'swiper/types';
 import { TeamResponce } from '@/services/app';
 

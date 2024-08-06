@@ -90,7 +90,7 @@
 
 <script>
 import AppBreadcrumbs from '@/components/app-breadcrumbs.vue';
-import Team from '@/components/team.vue';
+import Team from '@/components/Team.vue';
 import SupportBlock from '@/components/support-block.vue';
 
 export default {

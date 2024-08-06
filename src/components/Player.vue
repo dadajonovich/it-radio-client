@@ -4,15 +4,19 @@
       <q-skeleton v-if="loaderPlay" height="100%" />
       <template v-else>
         <img v-if="currentPlay.art" :src="currentPlay.art" alt="player" />
-        <img v-else :src="templateArtist" alt="player" />
+        <img v-else :src="'@/assets/img/mock/template-artist.png'" alt="player" />
       </template>
     </div>
     <div class="player__content">
       <div class="player__top">
         <q-skeleton v-if="loaderPlay" type="circle" class="player__btn m--skeleton" />
         <template v-else>
-          <button v-if="currentPlay.isPlay" @click="handlerPause" class="button player__btn m--pause"></button>
-          <button v-else @click="handlerPlay" class="button player__btn m--play"></button>
+          <button v-if="currentPlay.isPlay" @click="handlerPause" class="button player__btn m--pause">
+            <SvgIcon :src="pauseIcon" />
+          </button>
+          <button v-else @click="handlerPlay" class="button player__btn m--play">
+            <SvgIcon :src="playIcon" />
+          </button>
         </template>
         <div class="player__executor">
           <q-skeleton v-if="loaderPlay" class="player__executor m--skeleton" />
@@ -73,8 +77,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { app, audio as Player } from '@/services';
-import templateArtist from '@/assets/img/mock/template-artist.png';
 import { AzuraFirstResponce, AzuraSecondResponce, DataSong } from '@/services/audio';
+import SvgIcon from '@/components/SvgIcon.vue';
+import playIcon from '@/assets/img/icon/play.svg?raw';
+import pauseIcon from '@/assets/img/icon/pause.svg?raw';
 
 type PlayerData = {
   isFavorites: boolean;
@@ -85,12 +91,13 @@ type PlayerData = {
   songVolume: number;
   preToggleVol: number | null;
   playerInfo: any;
-  templateArtist: any;
+  playIcon: string;
+  pauseIcon: string;
 };
 
 export default defineComponent({
   name: 'player',
-  components: {},
+  components: { SvgIcon },
   data(): PlayerData {
     return {
       isFavorites: false,
@@ -105,7 +112,8 @@ export default defineComponent({
         currentTime: 0,
         duration: 0,
       },
-      templateArtist,
+      playIcon,
+      pauseIcon,
     };
   },
   computed: {
