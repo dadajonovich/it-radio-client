@@ -229,7 +229,7 @@ export default defineComponent({
     },
     handleConnection(e: MessageEvent) {
       const jsonData = JSON.parse(e.data) as AzuraFirstResponce | AzuraSecondResponce;
-      console.log(jsonData);
+      // console.log(jsonData);
       let data;
 
       if ('pub' in jsonData) {
@@ -257,7 +257,7 @@ export default defineComponent({
       }
     },
     actionCurrentPlay(song: DataSong) {
-      console.log('actionCurrentPlay', song);
+      // console.log('actionCurrentPlay', song);
       const currentPlay = {
         ...this.currentPlay, // Инфа про текущий трек
         ...song,

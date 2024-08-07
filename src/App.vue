@@ -21,7 +21,7 @@ import AppFooter from '@/components/app-footer.vue';
 import Authentication from '@/components/modal/authentication.vue';
 import Player from '@/components/Player.vue';
 import ChangingUser from '@/components/modal/сhanging-user.vue';
-import api from '@/services/api';
+import api from '@/services/Api';
 
 export default {
   // async preFetch({ store, currentRoute, previousRoute, redirect, ssrContext, urlPath, publicPath }) {},
