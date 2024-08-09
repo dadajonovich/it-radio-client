@@ -1,6 +1,6 @@
 import ajax from '@/utils/ajax';
 import router from '@/router';
-import store from '@/store';
+import store from '@/store-old';
 import cache from '@/utils/cache';
 
 class RESTError extends Error {

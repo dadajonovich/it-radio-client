@@ -39,7 +39,10 @@ class Api extends HttpClient {
         return responce.data;
       })
       .catch((error) => {
-        throw new ErrorInfo('Api.getTeam', error.message, error);
+        // throw new ErrorInfo('Api.getTeam', error.message, error);
+        const responce = new Error('Api.getTeam', error.message, error);
+        // console.log(error);
+        console.dir(responce);
       });
   }
 }
